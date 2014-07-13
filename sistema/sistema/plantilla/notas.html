@@ -1,0 +1,114 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <!-- Le styles -->
+    <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="experiment-pages.css" />
+    <link rel="stylesheet" type="text/css" href="/static/stylos.css">
+    <link href="/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/jquery.form.min.js"></script>
+    <script src="/static/js/demo.js"></script>
+    <script src="/static/bootstrap/js/bootstrap.js"></script>
+        <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+    </style>
+  <body>
+
+
+
+  <div class="btn-group">
+  <button type="button" class="btn btn-danger">Carrera</button>
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    {% if user.is_authenticated %}
+           <li><a href="{% url "vista_carrera" %}">Nueva Carrera</a></li>
+    {% else %}
+        <h1>NO ESTA LOGEADO</h1>
+      {% endif %}
+    <li class="divider"></li>
+    <li><a href="{% url "vista_carrera2" %}">Carrera Ofertadas</a></li>
+
+  </ul>
+</div>
+
+
+
+<div class="btn-group">
+  <button type="button" class="btn btn-danger">Director</button>
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      {% if user.is_authenticated %}
+        <li><a href="{% url "vista_logout" %}"> Cerrar Sesion </a></li>
+      {% else %}
+        <li><a href="{% url "vista_login" %}"> Login </a></li>
+      {% endif %}
+  </ul>
+</div>
+
+
+
+
+
+
+
+<div class="btn-group">
+  <button type="button" class="btn btn-danger">Plataforma Virtual</button>
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+      {% if user.is_authenticated %}
+          <li><a href="{% url "libros"%} ">Ver Libros</a></li>
+           <li class="divider"></li>
+          <li><a href="{% url "Autor" %}">Registrar Libro</a></li>
+      {% else %}
+        <li><a href="{% url "vista_login_estudiante" %}"> Login </a></li>
+      {% endif %}
+  </ul>
+</div>
+
+ <div class="btn-group">
+  <button type="button" class="btn btn-danger">Administrador</button>
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="/admin/">Login</a></li>
+  </ul>
+</div>
+
+
+ {% if user.is_authenticated %}
+ 		
+
+	<form action="" method="POST">
+		{% csrf_token %}
+		{{form.as_p}}
+		<button class="btn btn-primary" type="submit">Enviar</button>
+        <button  class="btn btn-danger">  <a href="/menudirector/" >Siguiente</a> </button>
+    </form>
+
+
+
+  {% else %}
+  	<h1>LOGUEARSE PORFAVOR</h1>
+  {% endif %}
+
+
+
+  </body>
+</html>

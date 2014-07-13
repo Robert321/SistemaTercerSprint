@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block contenido %}
+<table border="1">
+			<tr>
+					<td>Numero</td>
+					<td>Direccion</td>
+					<td>Telefono</td>
+				</tr>
+			{%for item in dato %}
+				
+				<tr>
+					<td>{{item.id}}</td>
+					<td>{{item.direccion}}</td>
+					<td>{{item.telefono}}</td>
+				</tr>
+			{%endfor%}
+		</table>
+{% endblock %}

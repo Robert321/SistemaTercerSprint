@@ -1,0 +1,15 @@
+
+<table border="1">
+			<tr>
+					<td>Nombre</td>
+				</tr>
+			{%for item in dato %}	
+				<tr>
+					<td>{{item.nombre}}</td>
+					<td>
+						<a href="/vermaterias/{{item.id}}/">Ver Carrera</a>
+					</td>
+				</tr>
+
+			{%endfor%}
+		</table>

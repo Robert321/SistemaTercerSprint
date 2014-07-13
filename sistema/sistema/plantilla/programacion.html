@@ -1,0 +1,17 @@
+
+<table width="100%" border="1">	
+			<tr>
+				<td>Estudiante</td>			
+				<td>Materia</td>
+			</tr>
+			{%for item in dato %}
+			<tr>
+				<td>
+					{{item.idEstudiante}}
+				</td>
+				<td>
+					{{item.idMateria}}
+				</td>
+			</tr>
+			{%endfor%}
+	</table>

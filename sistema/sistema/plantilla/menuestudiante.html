@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <!-- Le styles -->
+    <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="experiment-pages.css" />
+    <link rel="stylesheet" type="text/css" href="/static/stylos.css">
+    <link href="/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/jquery.form.min.js"></script>
+    <script src="/static/js/demo.js"></script>
+    <script src="/static/bootstrap/js/bootstrap.js"></script>
+        <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+    </style>
+  <body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+<div class="container-fluid">
+ <div class="btn-group">
+  <button type="button" class="btn btn-danger">Estudiante</button>
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+
+       <li class="divider"></li>
+      {% if user.is_authenticated %}
+        <li><a href="{% url "vista_logout_estudiante" %}"> Cerrar Sesion </a></li>
+        
+
+        	<li><a href="/agregarrelcarest/{{dato.id}}/">REGISTRAR CARRERA</a></li>
+		    <li><a href="/agregarrelestmat/{{dato.id}}/">Programar Materias</a></li>
+      
+      {% else %}
+        <li><a href="{% url "vista_login_estudiante" %}"> Login </a></li>
+        <li><a href="{% url "vista_estudiante" %}">Nuevo Estudiante</a></li>
+      {% endif %}
+  </ul>
+</div>
+      </div>
+    </div>
+
+    </div>
+
+
+ {% if user.is_authenticated %}
+<table width="100%" border="1">	
+			<tr>
+				<td>Nombres</td>			
+				<td>Apellidos</td>
+				<td>ci</td>
+				<td>email</td>
+				<td>password</td>
+		
+			</tr>
+
+			<tr>
+				<td>
+					{{dato.nombre}}
+				</td>
+				<td>
+					{{dato.apellido}}
+				</td>
+				<td>
+					{{dato.ci}}
+				</td>
+				<td>
+					{{dato.email}}
+				</td>
+				<td>
+					{{dato.password}}
+				</td>
+				<td>
+					<a href="/editarestudiante/{{dato.id}}/">Editar</a>
+					<!--<a href="/editarestudiante/{{dato.id}}/">Editar</a>-->
+				</td>
+			</tr>
+	</table>
+
+  {% else %}
+  	<h1>LOGUEARSE PORFAVOR</h1>
+  {% endif %}
+
+
+
+  </body>
+</html>
